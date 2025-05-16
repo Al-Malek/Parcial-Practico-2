@@ -9,7 +9,10 @@
           <li *ngFor="let etiqueta of recipe.etiquetas">{{ etiqueta }}</li>
         </ul>
         <div class="porciones">
-          Porciones: <span class="badge">{{ recipe.porciones }}</span>
+          <strong>Porciones:</strong> {{ recipe.porciones }}
+        </div>
+        <div class="ingredientes-count">
+          <strong># Ingredientes:</strong> {{ recipe.ingredientes?.length || 0 }}
         </div>
         <div class="btn-container">
           <button class="btn" (click)="goToDetail(recipe)">Ver la receta</button>
