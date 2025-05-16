@@ -11,6 +11,7 @@ import { Recipe } from '../Recipe';
 })
 export class RecipeDetailComponent implements OnInit {
   recipe: Recipe | null = null;
+  maxIngredientName: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -23,8 +24,23 @@ export class RecipeDetailComponent implements OnInit {
     if (id) {
       this.recipeService.getRecipeDetail(id).subscribe((data) => {
         this.recipe = data;
+        this.setMaxIngredient();
       });
     }
+  }
+
+  setMaxIngredient() {
+    if (!this.recipe || !this.recipe.ingredientes || this.recipe.ingredientes.length === 0) {
+      this.maxIngredientName = '';
+      return;
+    }
+    let max = this.recipe.ingredientes[0];
+    for (let ing of this.recipe.ingredientes) {
+      if (Number(ing.cantidad) > Number(max.cantidad)) {
+        max = ing;
+      }
+    }
+    this.maxIngredientName = max.nombre;
   }
 
   goBack() {

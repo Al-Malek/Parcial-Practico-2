@@ -18,6 +18,9 @@
       </div>
       <div class="ingredientes">
         <strong>Ingredientes</strong>
+        <div *ngIf="maxIngredientName">
+          <strong>Ingrediente más usado:</strong> {{ maxIngredientName }}
+        </div>
         <ul>
           <li *ngFor="let ing of recipe.ingredientes">
             {{ ing.nombre }} - {{ ing.cantidad }} {{ ing.unidad }}
