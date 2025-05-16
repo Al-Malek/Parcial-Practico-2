@@ -1,8 +1,5 @@
 <div>
   <div>
-    <div *ngIf="selected">
-      <app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail>
-    </div>
     <table>
       <thead>
         <tr>
@@ -13,7 +10,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let recipe of recipes" (click)="onSelect(recipe)">
+        <tr *ngFor="let recipe of recipes" (click)="goToDetail(recipe)" style="cursor:pointer">
           <td>{{ recipe.nombre }}</td>
           <td>
             <img
