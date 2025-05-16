@@ -1,28 +1,20 @@
-<div>
-  <div>
-    <table>
-      <thead>
-        <tr>
-          <th>Receta</th>
-          <th>Imagen</th>
-          <th>Porciones</th>
-          <th>Tiempo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let recipe of recipes" (click)="goToDetail(recipe)" style="cursor:pointer">
-          <td>{{ recipe.nombre }}</td>
-          <td>
-            <img
-              class="recipe-img"
-              [src]="recipe.imagen"
-              alt="{{ recipe.imagen }}"
-            />
-          </td>
-          <td>{{ recipe.porciones }}</td>
-          <td>{{ recipe.tiempo_minutos }} min</td>
-        </tr>
-      </tbody>
-    </table>
+<div class="recipe-list-bg">
+  <h2 class="title">Recetas uniandes</h2>
+  <div class="card-grid">
+    <div class="recipe-card" *ngFor="let recipe of recipes">
+      <img class="recipe-img" [src]="recipe.imagen" [alt]="recipe.nombre" />
+      <div class="recipe-card-body">
+        <h3>{{ recipe.nombre }}</h3>
+        <ul class="etiquetas">
+          <li *ngFor="let etiqueta of recipe.etiquetas">{{ etiqueta }}</li>
+        </ul>
+        <div class="porciones">
+          Porciones: <span class="badge">{{ recipe.porciones }}</span>
+        </div>
+        <div class="btn-container">
+          <button class="btn" (click)="goToDetail(recipe)">Ver la receta</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

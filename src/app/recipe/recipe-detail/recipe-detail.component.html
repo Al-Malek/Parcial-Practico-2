@@ -1,21 +1,38 @@
-<div class="recipe-detail">
-  <h2>{{ recipe.nombre }}</h2>
-  <img
-    class="recipe-detail-img"
-    [src]="recipe.imagen"
-    alt="{{ recipe.imagen }}"
-  />
-  <p><strong>Porciones:</strong> {{ recipe.porciones }}</p>
-  <p><strong>Tiempo:</strong> {{ recipe.tiempo_minutos }} min</p>
-  <h3>Ingredientes</h3>
-  <app-ingredient-list
-    [ingredients]="recipe.ingredientes"
-  ></app-ingredient-list>
-
-  <h3>Pasos</h3>
-  <ol>
-    <li *ngFor="let step of recipe.pasos">
-      {{ step }}
-    </li>
-  </ol>
+<div class="recipe-detail-bg">
+  <h2 class="title">Recetas uniandes</h2>
+  <div class="recipe-detail-card" *ngIf="recipe">
+    <div class="img-col">
+      <img
+        class="recipe-detail-img"
+        [src]="recipe.imagen"
+        [alt]="recipe.nombre"
+      />
+    </div>
+    <div class="info-col">
+      <h3>{{ recipe.nombre }}</h3>
+      <div class="row">
+        <span><strong>Porciones:</strong> {{ recipe.porciones }}</span>
+        <span><strong>Tiempo:</strong> {{ recipe.tiempo_minutos }} min</span>
+        <span><strong>Dificultad:</strong> {{ recipe.dificultad }}</span>
+        <span><strong>Tipo:</strong> {{ recipe.tipo }}</span>
+      </div>
+      <div class="ingredientes">
+        <strong>Ingredientes</strong>
+        <ul>
+          <li *ngFor="let ing of recipe.ingredientes">
+            {{ ing.nombre }} - {{ ing.cantidad }} {{ ing.unidad }}
+          </li>
+        </ul>
+      </div>
+      <div class="pasos">
+        <strong>Pasos</strong>
+        <ol>
+          <li *ngFor="let step of recipe.pasos">{{ step }}</li>
+        </ol>
+      </div>
+      <div class="btn-container">
+        <button class="btn" (click)="goBack()">Regresar</button>
+      </div>
+    </div>
+  </div>
 </div>

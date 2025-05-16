@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   selector: 'app-recipe-list',
   standalone: false,
   templateUrl: './recipe-list.component.html',
-  styleUrl: './recipe-list.component.css',
+  styleUrls: ['./recipe-list.component.css'],
 })
 export class RecipeListComponent implements OnInit {
   recipes: Recipe[] = [];
