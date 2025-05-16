@@ -1,4 +1,4 @@
 # Parcial Práctico 2
 
-- Nombre:
-- código:
+- Nombre: Yhojan Alejandro Franco Pardo
+- código: 202225577
